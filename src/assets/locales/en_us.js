@@ -22,10 +22,6 @@ export default {
   [keys.SECTION1_INSTRUCTIONS_2]: 'due to your nosebleeds',
   [keys.SECTION1_INSTRUCTIONS_3]: ':',
 
-  [keys.SECTION2_INSTRUCTIONS_1]: 'How bothered are you by the following ',
-  [keys.SECTION2_INSTRUCTIONS_2]: 'due to your nosebleeds',
-  [keys.SECTION2_INSTRUCTIONS_3]: '?',
-
   [keys.SECTION2_INSTRUCTIONS_1]:
     'How difficult is it to perform the following tasks ',
   [keys.SECTION2_INSTRUCTIONS_2]: 'due to your nosebleeds',
