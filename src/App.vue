@@ -3,7 +3,7 @@
     <v-app>
       <Questionnaire />
       <v-footer :padless="true">
-        <v-card flat tile width="100%" class="grey-lighten-2 text-center">
+        <v-card flat tile width="100%" class="text-center">
           <v-card-text>{{ t(k.FOOTER_COPYWRIGHT) }}</v-card-text>
         </v-card>
       </v-footer>
@@ -22,20 +22,57 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import './assets/scss/breakpoints.scss';
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
 
-#app .v-stepper__label {
-  line-height: 1.3;
-}
+  tbody tr:hover {
+    background-color: transparent !important;
+  }
+  th:first-child,
+  td:first-child {
+    padding-left: 0px !important;
+  }
 
-#app .v-text-field__details {
-  display: none;
+  th:last-child,
+  td:last-child {
+    padding-right: 0px !important;
+  }
+
+  .v-card__text {
+    font-size: 15px;
+  }
+
+  .v-text-field__details {
+    display: none;
+  }
+
+  .v-stepper__label {
+    line-height: 1.3;
+  }
+
+  tr th,
+  .v-input,
+  .v-label {
+    font-size: 14px !important;
+  }
+
+  .v-card__title {
+    word-break: keep-all;
+  }
+
+  .v-divider {
+    margin: 10px 0px;
+  }
+
+  @media only screen and (max-width: $SMALL) {
+    .v-label {
+      font-size: 16px !important;
+    }
+  }
 }
 </style>
