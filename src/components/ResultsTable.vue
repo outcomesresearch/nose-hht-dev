@@ -4,17 +4,17 @@
       <div class="disclaimer pb-2" v-if="$vuetify.lang.current != 'en_us'">
         {{ t(k.SCORE_ONLY_IN_ENGLISH) }}<v-divider></v-divider>
       </div>
-      <h4 v-if="!allFieldsHaveValues" class="font-italic pb-3">
+      <h4 v-if="!allFieldsHaveValues" class="font-italic mb-4">
         Result will display here when form is complete.
       </h4>
     </div>
-    <div v-if="allFieldsHaveValues" class="results">
-      <h3 class="black--text">Result:</h3>
+    <div v-if="allFieldsHaveValues" class="results mb-4">
+      <h3 class="black--text mb-2">Result:</h3>
       <pre>Sum: {{ sum }}</pre>
       <pre>Average: {{ average.toFixed(3) }}</pre>
     </div>
 
-    <v-simple-table class="my-2">
+    <v-simple-table>
       <template v-slot:default>
         <thead>
           <tr>

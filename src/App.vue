@@ -70,7 +70,8 @@ export default {
   }
 
   @media only screen and (max-width: $SMALL) {
-    .v-label {
+    .v-label,
+    .v-card__text {
       font-size: 16px !important;
     }
   }
