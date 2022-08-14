@@ -1,7 +1,7 @@
 <template>
   <v-stepper-content step="1">
     <v-card class="past-scores">
-      <v-form ref="form" v-model="valid">
+      <v-form ref="form" v-model="valid" @submit.prevent="handleKeyup">
         <v-container class="container-override">
           <v-card-title class="text-h5">{{
             t(k.AUTHENTICATE_YOURSELF)
@@ -16,6 +16,7 @@
                   label="natasha@example.com"
                   :rules="rules"
                   required
+                  @keyup.enter="handleKeyup"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -57,6 +58,9 @@
 <script>
 export default {
   methods: {
+    handleKeyup() {
+      this.logIn();
+    },
     logIn() {
       this.login_processing = true;
       setTimeout(() => {
