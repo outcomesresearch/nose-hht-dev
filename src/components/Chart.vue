@@ -5,7 +5,13 @@
 <script>
 import c3 from 'c3';
 
-const dataSeriesName = 'Score';
+const averageTimeseriesTitle = 'Average';
+const sumTimeseriesTitle = 'Sum';
+
+const formatters = {
+  [averageTimeseriesTitle]: (value) => value.toFixed(2),
+  [sumTimeseriesTitle]: parseInt,
+};
 
 export default {
   props: ['historicalData'],
@@ -23,7 +29,7 @@ export default {
     generatePlot() {
       if (this.chart) {
         this.chart.load({
-          unload: [dataSeriesName],
+          unload: [averageTimeseriesTitle, sumTimeseriesTitle],
         });
       }
 
@@ -31,6 +37,9 @@ export default {
         tooltip: {
           format: {
             title: (x) => new Date(x).toLocaleDateString(),
+            value: function (value, ratio, id) {
+              return formatters[id](value);
+            },
           },
         },
         axis: {
@@ -46,25 +55,28 @@ export default {
           },
           y: {
             padding: { top: 0, bottom: 0 },
+            label: averageTimeseriesTitle,
+          },
+          y2: {
+            show: true,
+            label: sumTimeseriesTitle,
           },
         },
         legend: { hide: true },
         data: {
           x: 'x',
           columns: [
+            ['x', ...this.historicalData.map((d) => d.date)],
+            [sumTimeseriesTitle, ...this.historicalData.map((d) => d.sumScore)],
             [
-              'x',
-              ...(this.historicalData
-                ? this.historicalData.map((d) => d.date)
-                : [Date.now()]),
-            ],
-            [
-              dataSeriesName,
-              ...(this.historicalData
-                ? this.historicalData.map((d) => d.score)
-                : [0]),
+              averageTimeseriesTitle,
+              ...this.historicalData.map((d) => d.averageScore),
             ],
           ],
+          axes: {
+            [averageTimeseriesTitle]: 'y',
+            [sumTimeseriesTitle]: 'y2',
+          },
         },
       });
     },

@@ -5,7 +5,7 @@
         <v-card-title class="text-h5">
           {{ t(k.RESULTS_TITLE) }}{{ valid_email }}
         </v-card-title>
-        <v-card-text style="padding-left: 0px" v-if="historicalData">
+        <v-card-text style="padding: 0px" v-if="historicalData">
           <Chart :historicalData="historicalData" />
         </v-card-text>
         <v-card-text v-else>
