@@ -26,21 +26,28 @@
                 t(k.CLOSE)
               }}</v-btn>
               <v-spacer></v-spacer>
-              <v-btn text @click="handleClose" :disabled="!valid">{{
-                t(k.SIGN_UP)
-              }}</v-btn>
               <v-btn
                 text
-                @click="handleClose"
-                :disabled="!valid"
+                @click="signUp"
+                :disabled="!valid || login_processing || signup_processing"
+                :loading="signup_processing"
+                >{{ t(k.SIGN_UP) }}</v-btn
+              >
+              <v-btn
+                text
+                @click="logIn"
+                :disabled="!valid || login_processing || signup_processing"
+                :loading="login_processing"
                 color="primary"
                 >{{ t(k.USE_EXISTING) }}</v-btn
               >
             </div>
           </v-card-actions>
-          <v-btn text @click="handleClose" class="show-on-mobile">{{
-            t(k.CLOSE)
-          }}</v-btn>
+          <v-card-actions class="show-on-mobile">
+            <div class="button-container">
+              <v-btn text @click="handleClose">{{ t(k.CLOSE) }}</v-btn>
+            </div>
+          </v-card-actions>
         </v-container>
       </v-form>
     </v-card>
@@ -50,6 +57,20 @@
 <script>
 export default {
   methods: {
+    logIn() {
+      this.login_processing = true;
+      setTimeout(() => {
+        this.$emit('valid-email', this.email);
+        this.login_processing = false;
+      }, 1000);
+    },
+    signUp() {
+      this.signup_processing = true;
+      setTimeout(() => {
+        this.$emit('valid-email', this.email);
+        this.signup_processing = false;
+      }, 500);
+    },
     handleClose() {
       this.email = '';
       this.$refs.form.resetValidation();
@@ -59,6 +80,8 @@ export default {
   data() {
     return {
       valid: false,
+      login_processing: false,
+      signup_processing: false,
       email: '',
       rules: [
         (v) => !!v || 'E-mail is required',

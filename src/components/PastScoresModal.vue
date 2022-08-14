@@ -1,16 +1,22 @@
 <template>
   <v-stepper v-model="currentStep" class="">
     <v-stepper-items>
-      <SubmitEmail @close="handleClose" @step-change="handleStepChange" />
+      <SubmitEmail @close="handleClose" @valid-email="receivedValidEmail" />
+      <ResultsPage
+        @close="handleClose"
+        :valid_email="email"
+        @step-change="handleStepChange"
+      />
     </v-stepper-items>
   </v-stepper>
 </template>
 
 <script>
 import SubmitEmail from './SubmitEmail';
+import ResultsPage from './ResultsPage';
 
 export default {
-  components: { SubmitEmail },
+  components: { SubmitEmail, ResultsPage },
   methods: {
     handleClose() {
       this.currentStep = 1;
@@ -19,9 +25,15 @@ export default {
     handleStepChange(nextStep) {
       this.currentStep = nextStep;
     },
+    receivedValidEmail(e) {
+      console.log(e);
+      this.email = e;
+      this.currentStep = 2;
+    },
   },
   data() {
     return {
+      email: undefined,
       currentStep: 1,
     };
   },

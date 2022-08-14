@@ -84,4 +84,6 @@ export default {
   USE_EXISTING: 'phrase to fetch scores using an already registered email',
   SUBMIT: 'word to submit a form',
   IMPROPER_EMAIL: 'warning that email was not provided in proper format',
+
+  RESULTS_TITLE: 'title of results modal page',
 };
