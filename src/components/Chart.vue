@@ -28,6 +28,11 @@ export default {
       }
 
       this.chart = c3.generate({
+        tooltip: {
+          format: {
+            title: (x) => new Date(x).toLocaleDateString(),
+          },
+        },
         axis: {
           x: {
             padding: { left: 0, right: 0 },

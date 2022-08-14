@@ -25,6 +25,7 @@ export default {
 <style lang="scss">
 @import './assets/scss/breakpoints.scss';
 @import './assets/scss/c3.scss';
+// @import './assets/scss/tooltip.scss';
 
 #app {
   -webkit-font-smoothing: antialiased;
@@ -34,22 +35,9 @@ export default {
   .grid {
     display: grid;
   }
-  
+
   .v-overlay--active {
     touch-action: none;
-  }
-
-  tbody tr:hover {
-    background-color: transparent !important;
-  }
-  th:first-child,
-  td:first-child {
-    padding-left: 0px !important;
-  }
-
-  th:last-child,
-  td:last-child {
-    padding-right: 0px !important;
   }
 
   .v-card__text {

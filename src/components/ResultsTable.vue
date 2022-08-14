@@ -138,6 +138,20 @@ export default {
   box-shadow: 0px 0px 2px #f6412d, inset 0px 0px 2px #f6412d;
 }
 
+tbody tr:hover {
+  background-color: transparent !important;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 0px !important;
+}
+
+th:last-child,
+td:last-child {
+  padding-right: 0px !important;
+}
+
 @media only screen and (max-width: $SMALL) {
   .score-interp-title {
     width: 100px;
