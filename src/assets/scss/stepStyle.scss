@@ -1,0 +1,26 @@
+.button-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.show-on-mobile {
+  display: none;
+}
+.show-on-desktop {
+  display: block;
+}
+
+@media only screen and (max-width: $SMALL) {
+  .button-container {
+    flex-direction: column;
+  }
+
+  .show-on-desktop {
+    display: none;
+  }
+  .show-on-mobile {
+    display: block;
+    margin-top: auto;
+  }
+}

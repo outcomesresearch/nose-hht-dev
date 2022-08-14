@@ -112,6 +112,21 @@
           between two instances should be considered a clinically meaningful
           difference.
         </p>
+        <v-dialog
+          v-model="dialog"
+          :fullscreen="isSmallWidth"
+          max-width="900px"
+          transition="dialog-bottom-transition"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <div class="grid past-score-container my-5">
+              <v-btn color="primary" v-bind="attrs" v-on="on">{{
+                t(k.LOAD_PAST_SCORES)
+              }}</v-btn>
+            </div>
+          </template>
+          <PastScoresModal @close="dialog = false" :smallSize="isSmallWidth" />
+        </v-dialog>
       </v-card-text>
     </v-card>
   </div>
@@ -121,6 +136,7 @@
 import keys from '../assets/locales/keys';
 import HeaderCard from './HeaderCard';
 import ResultsTable from './ResultsTable';
+import PastScoresModal from './PastScoresModal';
 
 const BREAKPOINT = 700;
 
@@ -139,7 +155,7 @@ const SECTION3_PROMPTS = getMatchingKeys('SECTION3_PROMPT');
 const SECTION3_OPTIONS = getMatchingKeys('SECTION3_OPTION');
 
 export default {
-  components: { HeaderCard, ResultsTable },
+  components: { HeaderCard, ResultsTable, PastScoresModal },
   methods: {
     handleStepChange(indexInSection, section) {
       // On first questions of steps 2 and 3, validate previous section's answers
@@ -153,6 +169,7 @@ export default {
   },
   data() {
     return {
+      dialog: false,
       e6: 1,
       isSmallWidth: window.innerWidth < BREAKPOINT,
       rules: [(v) => v !== null],
@@ -188,6 +205,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.past-score-container {
+  grid-template-columns: min-content;
+  align-items: center;
+  justify-content: center;
+}
+
 .v-radio:not(:last-child) {
   margin-right: 16px;
 }

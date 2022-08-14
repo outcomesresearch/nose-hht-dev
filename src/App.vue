@@ -28,7 +28,11 @@ export default {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
+
+  .grid {
+    display: grid;
+  }
 
   tbody tr:hover {
     background-color: transparent !important;
@@ -49,6 +53,15 @@ export default {
 
   .v-text-field__details {
     display: none;
+  }
+
+  .v-card__actions {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .past-scores .v-text-field__details {
+    display: flex;
   }
 
   .v-stepper__label {

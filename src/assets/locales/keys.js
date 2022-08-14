@@ -70,4 +70,18 @@ export default {
   SECTION3_PROMPT_7: 'section 3 question 7 (27)',
   SECTION3_PROMPT_8: 'section 3 question 8 (28)',
   SECTION3_PROMPT_9: 'section 3 question 9 (29)',
+
+  LOAD_PAST_SCORES: 'phrase to pull past scores',
+  EMAIL_DISCLAIMER_1:
+    'discussing use of email to retrieve results, first paragraph',
+  EMAIL_DISCLAIMER_2:
+    'discussing use of email to retrieve results, second paragraph',
+
+  AUTHENTICATE_YOURSELF: 'phrase to signal they need to authenticate',
+  CLOSE: 'word to close a dialog',
+  BACK: 'word to go back to previous step',
+  SIGN_UP: 'word to add email to database to store their results',
+  USE_EXISTING: 'phrase to fetch scores using an already registered email',
+  SUBMIT: 'word to submit a form',
+  IMPROPER_EMAIL: 'warning that email was not provided in proper format',
 };
