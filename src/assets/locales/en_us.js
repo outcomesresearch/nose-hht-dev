@@ -96,4 +96,5 @@ export default {
   [keys.IMPROPER_EMAIL]: 'Email not in correct format',
 
   [keys.RESULTS_TITLE]: 'NOSE-HHT Score History for ',
+  [keys.NO_DATA_AVAILABLE]: 'No data available for that email.',
 };

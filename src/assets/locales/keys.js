@@ -86,4 +86,6 @@ export default {
   IMPROPER_EMAIL: 'warning that email was not provided in proper format',
 
   RESULTS_TITLE: 'title of results modal page',
+  NO_DATA_AVAILABLE:
+    'result when valid-formatted email entered, but no data for it',
 };

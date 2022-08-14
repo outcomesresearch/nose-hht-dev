@@ -24,6 +24,7 @@ export default {
 
 <style lang="scss">
 @import './assets/scss/breakpoints.scss';
+@import './assets/scss/c3.scss';
 
 #app {
   -webkit-font-smoothing: antialiased;
@@ -32,6 +33,10 @@ export default {
 
   .grid {
     display: grid;
+  }
+  
+  .v-overlay--active {
+    touch-action: none;
   }
 
   tbody tr:hover {

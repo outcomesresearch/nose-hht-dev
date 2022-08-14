@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "shared-code": "git+https://github.com/outcomesresearch/shared-code.git",
+    "c3": "^0.7.20",
     "vue": "^2.6.11",
     "vuetify": "^2.6.4"
   },
