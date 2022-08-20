@@ -15,13 +15,13 @@
           <div class="button-container">
             <v-btn text @click="$emit('step-change', 1)">{{ t(k.BACK) }}</v-btn>
             <v-spacer></v-spacer>
-            <v-btn text @click="handleClose">{{ t(k.CLOSE) }}</v-btn>
+            <v-btn text @click="closeModalFromBus">{{ t(k.CLOSE) }}</v-btn>
           </div>
         </v-card-actions>
         <v-card-actions class="show-on-mobile">
           <div class="button-container">
             <v-btn text @click="$emit('step-change', 1)">{{ t(k.BACK) }}</v-btn>
-            <v-btn text @click="handleClose">{{ t(k.CLOSE) }}</v-btn>
+            <v-btn text @click="closeModalFromBus">{{ t(k.CLOSE) }}</v-btn>
           </div>
         </v-card-actions>
       </v-container>
@@ -39,11 +39,6 @@ export default {
   watch: {
     valid_email(e) {
       this.historicalData = database[e];
-    },
-  },
-  methods: {
-    handleClose() {
-      this.$emit('close');
     },
   },
   data() {

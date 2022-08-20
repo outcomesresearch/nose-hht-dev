@@ -4,7 +4,7 @@
     :fullscreen="smallSize"
     max-width="900px"
     transition="dialog-bottom-transition"
-    @click:outside="handleClose"
+    @click:outside="closeModalFromBus"
   >
     <template v-slot:activator="{ on, attrs }">
       <div class="grid past-score-container my-5">
@@ -15,12 +15,8 @@
     </template>
     <v-stepper v-model="currentStep" class="">
       <v-stepper-items>
-        <SubmitEmail @close="handleClose" @valid-email="receivedValidEmail" />
-        <ResultsPage
-          @close="handleClose"
-          :valid_email="email"
-          @step-change="handleStepChange"
-        />
+        <SubmitEmail @valid-email="receivedValidEmail" />
+        <ResultsPage :valid_email="email" @step-change="handleStepChange" />
       </v-stepper-items>
     </v-stepper>
   </v-dialog>
@@ -29,16 +25,19 @@
 <script>
 import SubmitEmail from './SubmitEmail';
 import ResultsPage from './ResultsPage';
+import { bus, MODAL_CLOSED } from '../services/bus';
 
 export default {
   props: ['smallSize'],
   components: { SubmitEmail, ResultsPage },
-  methods: {
-    handleClose() {
+  created() {
+    bus.$on(MODAL_CLOSED, () => {
       this.currentStep = 1;
       this.email = '';
       this.dialog = false;
-    },
+    });
+  },
+  methods: {
     handleStepChange(nextStep) {
       this.currentStep = nextStep;
     },
@@ -51,7 +50,7 @@ export default {
   data() {
     return {
       dialog: false,
-      email: undefined,
+      email: '',
       currentStep: 1,
     };
   },

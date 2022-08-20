@@ -12,7 +12,7 @@
             <v-row>
               <v-col cols="12" sm="6">
                 <v-text-field
-                  v-model="email"
+                  v-model="internal_email"
                   label="natasha@example.com"
                   :rules="rules"
                   required
@@ -23,7 +23,7 @@
           </v-card-text>
           <v-card-actions>
             <div class="button-container">
-              <v-btn text @click="handleClose" class="show-on-desktop">{{
+              <v-btn text @click="closeModalFromBus" class="show-on-desktop">{{
                 t(k.CLOSE)
               }}</v-btn>
               <v-spacer></v-spacer>
@@ -46,7 +46,7 @@
           </v-card-actions>
           <v-card-actions class="show-on-mobile">
             <div class="button-container">
-              <v-btn text @click="handleClose">{{ t(k.CLOSE) }}</v-btn>
+              <v-btn text @click="closeModalFromBus">{{ t(k.CLOSE) }}</v-btn>
             </div>
           </v-card-actions>
         </v-container>
@@ -56,7 +56,15 @@
 </template>
 
 <script>
+import { bus, MODAL_CLOSED } from '../services/bus';
+
 export default {
+  created() {
+    bus.$on(MODAL_CLOSED, () => {
+      this.internal_email = '';
+      this.$refs.form.resetValidation();
+    });
+  },
   methods: {
     handleKeyup() {
       this.logIn();
@@ -64,21 +72,16 @@ export default {
     logIn() {
       this.login_processing = true;
       setTimeout(() => {
-        this.$emit('valid-email', this.email);
+        this.$emit('valid-email', this.internal_email);
         this.login_processing = false;
       }, 1000);
     },
     signUp() {
       this.signup_processing = true;
       setTimeout(() => {
-        this.$emit('valid-email', this.email);
+        this.$emit('valid-email', this.internal_email);
         this.signup_processing = false;
       }, 500);
-    },
-    handleClose() {
-      this.email = '';
-      this.$refs.form.resetValidation();
-      this.$emit('close');
     },
   },
   data() {
@@ -86,7 +89,7 @@ export default {
       valid: false,
       login_processing: false,
       signup_processing: false,
-      email: '',
+      internal_email: '',
       rules: [
         (v) => !!v || 'E-mail is required',
         (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
