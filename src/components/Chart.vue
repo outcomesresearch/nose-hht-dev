@@ -4,7 +4,8 @@
 
 <script>
 import c3 from 'c3';
-import * as d3 from 'd3';
+import { mergeDeep } from '../services/merge';
+import staticProps from '../assets/json/chartProps';
 
 const averageTimeseriesTitle = 'Average';
 const sumTimeseriesTitle = 'Sum';
@@ -34,60 +35,51 @@ export default {
         });
       }
 
-      this.chart = c3.generate({
-        tooltip: {
-          format: {
-            title: (x) => d3.timeFormat('%x')(x),
-            name: (name, ratio, id) => {
-              if (id === averageTimeseriesTitle) {
-                return this.t(this.k.AVERAGE);
-              }
-              if (id === sumTimeseriesTitle) {
-                return this.t(this.k.SUM);
-              }
-            },
-            value: (value, ratio, id) => {
-              return valueFormatters[id](value);
-            },
-          },
-        },
-        axis: {
-          x: {
-            padding: { left: 0, right: 0 },
-            type: 'timeseries',
-            tick: {
-              format: (x) => d3.timeFormat('%x')(x),
-              culling: false,
-              count: screen.width / 50,
-              rotate: -60,
+      this.chart = c3.generate(
+        mergeDeep(staticProps, {
+          tooltip: {
+            format: {
+              name: (name, ratio, id) => {
+                if (id === averageTimeseriesTitle) {
+                  return this.t(this.k.AVERAGE);
+                }
+                if (id === sumTimeseriesTitle) {
+                  return this.t(this.k.SUM);
+                }
+              },
+              value: (value, ratio, id) => {
+                return valueFormatters[id](value);
+              },
             },
           },
-          y: {
-            padding: { top: 0, bottom: 0 },
-            label: this.t(this.k.AVERAGE),
+          axis: {
+            y: {
+              label: this.t(this.k.AVERAGE),
+            },
+            y2: {
+              label: this.t(this.k.SUM),
+            },
           },
-          y2: {
-            show: true,
-            label: this.t(this.k.SUM),
-          },
-        },
-        legend: { hide: true },
-        data: {
-          x: 'x',
-          columns: [
-            ['x', ...this.historicalData.map((d) => d.date)],
-            [sumTimeseriesTitle, ...this.historicalData.map((d) => d.sumScore)],
-            [
-              averageTimeseriesTitle,
-              ...this.historicalData.map((d) => d.averageScore),
+          data: {
+            x: 'x',
+            columns: [
+              ['x', ...this.historicalData.map((d) => d.date)],
+              [
+                sumTimeseriesTitle,
+                ...this.historicalData.map((d) => d.sumScore),
+              ],
+              [
+                averageTimeseriesTitle,
+                ...this.historicalData.map((d) => d.averageScore),
+              ],
             ],
-          ],
-          axes: {
-            [averageTimeseriesTitle]: 'y',
-            [sumTimeseriesTitle]: 'y2',
+            axes: {
+              [averageTimeseriesTitle]: 'y',
+              [sumTimeseriesTitle]: 'y2',
+            },
           },
-        },
-      });
+        }),
+      );
     },
   },
   mounted() {
