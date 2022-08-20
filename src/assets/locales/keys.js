@@ -91,4 +91,5 @@ export default {
 
   SUM: "word for the 'sum' metric portion of results",
   AVERAGE: "word for the 'average' metric portion of results",
+  CONTINUE: 'word to proceed to next step',
 };

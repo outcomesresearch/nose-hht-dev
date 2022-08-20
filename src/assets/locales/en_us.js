@@ -100,4 +100,5 @@ export default {
 
   [keys.SUM]: 'Sum',
   [keys.AVERAGE]: 'Average',
+  [keys.CONTINUE]: 'Continue',
 };

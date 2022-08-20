@@ -32,15 +32,7 @@
                 @click="signUp"
                 :disabled="!valid || login_processing || signup_processing"
                 :loading="signup_processing"
-                >{{ t(k.SIGN_UP) }}</v-btn
-              >
-              <v-btn
-                text
-                @click="logIn"
-                :disabled="!valid || login_processing || signup_processing"
-                :loading="login_processing"
-                color="primary"
-                >{{ t(k.USE_EXISTING) }}</v-btn
+                >{{ t(k.CONTINUE) }}</v-btn
               >
             </div>
           </v-card-actions>
