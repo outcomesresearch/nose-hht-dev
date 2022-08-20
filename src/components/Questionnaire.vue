@@ -112,21 +112,7 @@
           between two instances should be considered a clinically meaningful
           difference.
         </p>
-        <v-dialog
-          v-model="dialog"
-          :fullscreen="isSmallWidth"
-          max-width="900px"
-          transition="dialog-bottom-transition"
-        >
-          <template v-slot:activator="{ on, attrs }">
-            <div class="grid past-score-container my-5">
-              <v-btn color="primary" v-bind="attrs" v-on="on">{{
-                t(k.LOAD_PAST_SCORES)
-              }}</v-btn>
-            </div>
-          </template>
-          <PastScoresModal @close="dialog = false" :smallSize="isSmallWidth" />
-        </v-dialog>
+        <PastScoresModal :smallSize="isSmallWidth" />
       </v-card-text>
     </v-card>
   </div>
@@ -169,7 +155,6 @@ export default {
   },
   data() {
     return {
-      dialog: false,
       e6: 1,
       isSmallWidth: window.innerWidth < BREAKPOINT,
       rules: [(v) => v !== null],
