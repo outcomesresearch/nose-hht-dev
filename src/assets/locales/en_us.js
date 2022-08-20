@@ -97,4 +97,7 @@ export default {
 
   [keys.RESULTS_TITLE]: 'NOSE-HHT Score History for ',
   [keys.NO_DATA_AVAILABLE]: 'No data available for that email.',
+
+  [keys.SUM]: 'Sum',
+  [keys.AVERAGE]: 'Average',
 };

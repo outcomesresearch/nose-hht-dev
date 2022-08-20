@@ -4,11 +4,12 @@
 
 <script>
 import c3 from 'c3';
+import * as d3 from 'd3';
 
 const averageTimeseriesTitle = 'Average';
 const sumTimeseriesTitle = 'Sum';
 
-const formatters = {
+const valueFormatters = {
   [averageTimeseriesTitle]: (value) => value.toFixed(2),
   [sumTimeseriesTitle]: parseInt,
 };
@@ -36,9 +37,17 @@ export default {
       this.chart = c3.generate({
         tooltip: {
           format: {
-            title: (x) => new Date(x).toLocaleDateString(),
-            value: function (value, ratio, id) {
-              return formatters[id](value);
+            title: (x) => d3.timeFormat('%x')(x),
+            name: (name, ratio, id) => {
+              if (id === averageTimeseriesTitle) {
+                return this.t(this.k.AVERAGE);
+              }
+              if (id === sumTimeseriesTitle) {
+                return this.t(this.k.SUM);
+              }
+            },
+            value: (value, ratio, id) => {
+              return valueFormatters[id](value);
             },
           },
         },
@@ -47,7 +56,7 @@ export default {
             padding: { left: 0, right: 0 },
             type: 'timeseries',
             tick: {
-              format: '%B %d',
+              format: (x) => d3.timeFormat('%x')(x),
               culling: false,
               count: screen.width / 50,
               rotate: -60,
@@ -55,11 +64,11 @@ export default {
           },
           y: {
             padding: { top: 0, bottom: 0 },
-            label: averageTimeseriesTitle,
+            label: this.t(this.k.AVERAGE),
           },
           y2: {
             show: true,
-            label: sumTimeseriesTitle,
+            label: this.t(this.k.SUM),
           },
         },
         legend: { hide: true },

@@ -88,4 +88,7 @@ export default {
   RESULTS_TITLE: 'title of results modal page',
   NO_DATA_AVAILABLE:
     'result when valid-formatted email entered, but no data for it',
+
+  SUM: "word for the 'sum' metric portion of results",
+  AVERAGE: "word for the 'average' metric portion of results",
 };

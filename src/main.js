@@ -12,4 +12,7 @@ Vue.config.productionTip = false;
 new Vue({
   vuetify,
   render: (h) => h(App),
+  mounted() {
+    this.$vuetify.lang.defaultLocale = 'en_us';
+  },
 }).$mount('#app-entry');
