@@ -101,4 +101,5 @@ export default {
   [keys.SUM]: 'Sum',
   [keys.AVERAGE]: 'Average',
   [keys.CONTINUE]: 'Continue',
+  [keys.ADD_DATA]: "Add today's score",
 };
