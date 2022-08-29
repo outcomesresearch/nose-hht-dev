@@ -5,7 +5,7 @@
         <v-card-title class="text-h5">
           {{ t(k.RESULTS_TITLE) }}{{ valid_email }}
         </v-card-title>
-        <v-card-text style="padding: 0px" v-if="historicalData">
+        <v-card-text style="padding: 0px;" v-if="historicalData.length">
           <Chart :historicalData="historicalData" />
         </v-card-text>
         <v-card-text v-else>
@@ -38,7 +38,7 @@ export default {
   components: { Chart },
   watch: {
     valid_email(e) {
-      this.historicalData = database[e];
+      this.historicalData = database[e] || [];
     },
   },
   data() {

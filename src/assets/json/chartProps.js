@@ -12,9 +12,8 @@ export default {
       type: 'timeseries',
       tick: {
         format: (x) => d3.timeFormat('%x')(x),
-        culling: false,
+        culling: true,
         rotate: -60,
-        count: screen.width / 50,
       },
     },
     y: {
