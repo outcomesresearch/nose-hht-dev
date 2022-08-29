@@ -94,6 +94,9 @@ export default {
         if (this.allFieldsHaveValues) {
           this.sum = this.calculateSum();
           this.average = this.calculateAverage();
+          this.$store.dispatch('SET_QUESTIONNAIRECOMPLETE', true);
+          this.$store.dispatch('SET_AVERAGE', this.average);
+          this.$store.dispatch('SET_SUM', this.sum);
         }
       },
       deep: true,
