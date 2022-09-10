@@ -37,10 +37,19 @@ export default {
       // Get appropriate number of ticks, up to 95 due to max modal width
       return Math.min(window.innerWidth / 20, 95);
     },
+    isClinicallySignificant(value, seriesName, i, data) {
+      if (data && data.length && i > 0) {
+        const { sumScore: prevSum, averageScore: prevAvg } = data[i - 1];
+        const { sumScore: thisSum, averageScore: thisAvg } = data[i];
+        return (
+          Math.abs(thisSum - prevSum) > 13 && Math.abs(thisAvg - prevAvg) > 0.46
+        );
+      }
+    },
     generatePlot() {
       const sorted = this.historicalData
         .slice()
-        .sort((a, b) => a.date > b.date);
+        .sort((a, b) => a.date - b.date);
 
       // If dataset contains more points than we can show at this size,
       let maxAtThisSize = this.getTicksAtCurrentSize();
@@ -57,7 +66,7 @@ export default {
 
       const sortedBySum = croppedDataset
         .slice()
-        .sort((a, b) => b.sumScore < a.sumScore);
+        .sort((a, b) => a.sumScore - b.sumScore);
 
       this.chart = c3.generate(
         mergeDeep(staticProps, {
@@ -82,7 +91,12 @@ export default {
             x: 'x',
             hide: [sumTimeseriesTitle],
             labels: {
-              format: () => '•',
+              // Value, series, index
+              format: (v, s, i) => {
+                return this.isClinicallySignificant(v, s, i, croppedDataset)
+                  ? '•'
+                  : '';
+              },
             },
             color: (color, d) => {
               if (d.id && d.id === sumTimeseriesTitle) {
@@ -133,9 +147,13 @@ export default {
 .c3-texts-Sum.c3-texts .c3-text {
   display: none;
 }
+
+.c3-texts-Average {
+  color: white; // fallback for browsers that do not pull currentColor from fill color
+}
 .c3-texts-Average.c3-texts .c3-text {
-  font-size: 30px;
-  transform: translateY(5px);
+  font-size: 40px;
+  transform: translateY(8px);
   -webkit-box-shadow: 0px 0px 2px currentColor, inset 0px 0px 2px currentColor;
   box-shadow: 0px 0px 2px currentColor, inset 0px 0px 2px currentColor;
   text-shadow: 0px 0px 2px currentColor;
