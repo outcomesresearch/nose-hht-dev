@@ -81,6 +81,9 @@ export default {
           data: {
             x: 'x',
             hide: [sumTimeseriesTitle],
+            labels: {
+              format: () => '•',
+            },
             color: (color, d) => {
               if (d.id && d.id === sumTimeseriesTitle) {
                 return this.getColor(d.value, 'sum');
@@ -123,4 +126,19 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss">
+.c3-chart-bar.c3-target-Sum {
+  display: none;
+}
+.c3-texts-Sum.c3-texts .c3-text {
+  display: none;
+}
+.c3-texts-Average.c3-texts .c3-text {
+  font-size: 30px;
+  transform: translateY(5px);
+  -webkit-box-shadow: 0px 0px 2px currentColor, inset 0px 0px 2px currentColor;
+  box-shadow: 0px 0px 2px currentColor, inset 0px 0px 2px currentColor;
+  text-shadow: 0px 0px 2px currentColor;
+  z-index: 10;
+}
+</style>

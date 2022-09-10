@@ -20,11 +20,11 @@ export default {
       },
     },
     y: {
-      padding: { top: 0, bottom: 0 },
+      padding: { top: 15, bottom: 0 },
     },
     y2: {
       show: true,
-      padding: { top: 0, bottom: 0 },
+      padding: { top: 15, bottom: 0 },
     },
   },
   legend: { hide: true },
