@@ -28,6 +28,11 @@ export default {
     };
   },
   methods: {
+    getColor(value, measure) {
+      if (this.isMild({ [measure]: value })[measure]) return '#ffec19';
+      if (this.isModerate({ [measure]: value })[measure]) return 'orange';
+      if (this.isSevere({ [measure]: value })[measure]) return '#f6412d';
+    },
     getTicksAtCurrentSize() {
       // Get appropriate number of ticks, up to 95 due to max modal width
       return Math.min(window.innerWidth / 20, 95);
@@ -76,6 +81,14 @@ export default {
           data: {
             x: 'x',
             hide: [sumTimeseriesTitle],
+            color: (color, d) => {
+              if (d.id && d.id === sumTimeseriesTitle) {
+                return this.getColor(d.value, 'sum');
+              }
+              if (d.id && d.id === averageTimeseriesTitle) {
+                return this.getColor(d.value, 'average');
+              }
+            },
             columns: [
               [
                 'x',
