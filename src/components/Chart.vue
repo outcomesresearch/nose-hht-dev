@@ -4,9 +4,9 @@
 
 <script>
 import c3 from 'c3';
+import * as d3 from 'd3';
 import { mergeDeep } from '../services/merge';
 import staticProps from '../assets/json/chartProps';
-
 const averageTimeseriesTitle = 'Average';
 const sumTimeseriesTitle = 'Sum';
 
@@ -28,34 +28,21 @@ export default {
     };
   },
   methods: {
-    getXTicks(data) {
-      // Get max number of ticks at this screen size
-      const ticksAtThisSize = this.getTicksAtCurrentSize();
-
-      // If the data has more ticks than 2, it's possible the proportions would
-      // leave two ticks super close at one side, and a tick or two at the far end
-      const beginning = data[0].date;
-      const end = data[data.length - 1].date;
-      const retVal = [beginning];
-      const msPerTick = (end - beginning) / ticksAtThisSize;
-      for (let x = 1; x < ticksAtThisSize; x++) {
-        retVal.push(retVal[x - 1] + msPerTick);
-      }
-      retVal.push(end);
-      return retVal;
-    },
     getTicksAtCurrentSize() {
-      // Get appropriate number of ticks, up to 15 due to max modal width
-      return Math.min(window.innerWidth / 50, 15);
+      // Get appropriate number of ticks, up to 95 due to max modal width
+      return Math.min(window.innerWidth / 20, 95);
     },
     generatePlot() {
       const sorted = this.historicalData
         .slice()
         .sort((a, b) => a.date > b.date);
 
-      // We can use the data's own x values if there's only two, else create linspace of x ticks
-      let xTickArray =
-        sorted.length > 2 ? this.getXTicks(sorted) : sorted.map((d) => d.date);
+      // If dataset contains more points than we can show at this size,
+      let maxAtThisSize = this.getTicksAtCurrentSize();
+      let croppedDataset =
+        sorted.length > maxAtThisSize
+          ? sorted.slice(-1 * maxAtThisSize)
+          : sorted;
 
       if (this.chart) {
         this.chart.load({
@@ -63,20 +50,16 @@ export default {
         });
       }
 
+      const sortedBySum = croppedDataset
+        .slice()
+        .sort((a, b) => b.sumScore < a.sumScore);
+
       this.chart = c3.generate(
         mergeDeep(staticProps, {
           tooltip: {
             format: {
-              name: (name, ratio, id) => {
-                if (id === averageTimeseriesTitle) {
-                  return this.t(this.k.AVERAGE);
-                }
-                if (id === sumTimeseriesTitle) {
-                  return this.t(this.k.SUM);
-                }
-              },
-              value: (value, ratio, id) => {
-                return valueFormatters[id](value);
+              title: (_, index) => {
+                return d3.timeFormat('%x')(croppedDataset[index].date);
               },
             },
           },
@@ -85,23 +68,25 @@ export default {
               label: this.t(this.k.AVERAGE),
             },
             y2: {
+              min: 0,
+              max: sortedBySum[sortedBySum.length - 1].sumScore,
               label: this.t(this.k.SUM),
-            },
-            x: {
-              tick: { values: xTickArray },
             },
           },
           data: {
             x: 'x',
+            hide: [sumTimeseriesTitle],
             columns: [
-              ['x', ...this.historicalData.map((d) => d.date)],
               [
-                sumTimeseriesTitle,
-                ...this.historicalData.map((d) => d.sumScore),
+                'x',
+                ...croppedDataset.map((d) =>
+                  new Date(d.date).toLocaleDateString(),
+                ),
               ],
+              [sumTimeseriesTitle, ...croppedDataset.map((a) => a.sumScore)],
               [
                 averageTimeseriesTitle,
-                ...this.historicalData.map((d) => d.averageScore),
+                ...croppedDataset.map((a) => a.averageScore),
               ],
             ],
             axes: {

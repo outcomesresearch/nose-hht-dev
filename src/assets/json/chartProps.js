@@ -1,19 +1,22 @@
 import * as d3 from 'd3';
 
 export default {
-  tooltip: {
-    format: {
-      title: (x) => d3.timeFormat('%x')(x),
+  data: {
+    type: 'bar',
+  },
+  bar: {
+    width: {
+      ratio: 0.5,
     },
   },
   axis: {
     x: {
       padding: { left: 0, right: 0 },
-      type: 'timeseries',
+      type: 'category',
       tick: {
-        format: (x) => d3.timeFormat('%x')(x),
-        culling: true,
-        rotate: -60,
+        multiline: false,
+        centered: true,
+        rotate: -70,
       },
     },
     y: {
@@ -21,6 +24,7 @@ export default {
     },
     y2: {
       show: true,
+      padding: { top: 0, bottom: 0 },
     },
   },
   legend: { hide: true },
