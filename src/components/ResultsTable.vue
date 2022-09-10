@@ -29,29 +29,41 @@
           <tr class="mild">
             <td class="text-left">{{ t(k.INTERPRETATION_MILD) }}</td>
             <td>
-              <div :class="sum <= 27 && `outline`">&le; 27</div>
+              <div :class="isMild({ sum }).sum && `outline`">
+                {{ isMild({}).phrase.sum }}
+              </div>
             </td>
             <td>
-              <div :class="average <= 1 && `outline`">&le; 1</div>
+              <div :class="isMild({ average }).average && `outline`">
+                {{ isMild({}).phrase.average }}
+              </div>
             </td>
           </tr>
           <tr class="moderate">
             <td class="text-left">{{ t(k.INTERPRETATION_MODERATE) }}</td>
             <td>
-              <div :class="sum >= 28 && sum <= 54 && `outline`">28 to 54</div>
+              <div :class="isModerate({ sum }).sum && `outline`">
+                {{ isModerate({}).phrase.sum }}
+              </div>
             </td>
             <td>
-              <div :class="average > 1.01 && average <= 2 && `outline`">
-                1.01 to 2
+              <div :class="isModerate({ average }).average && `outline`">
+                {{ isModerate({}).phrase.average }}
               </div>
             </td>
           </tr>
           <tr class="severe">
             <td class="text-left">{{ t(k.INTERPRETATION_SEVERE) }}</td>
             <td>
-              <div :class="sum > 54 && `outline`">&gt; 54</div>
+              <div :class="isSevere({ sum }).sum && `outline`">
+                {{ isSevere({}).phrase.sum }}
+              </div>
             </td>
-            <td><div :class="average > 2 && `outline`">&gt; 2</div></td>
+            <td>
+              <div :class="isSevere({ average }).average && `outline`">
+                {{ isSevere({}).phrase.average }}
+              </div>
+            </td>
           </tr>
         </tbody>
       </template>
