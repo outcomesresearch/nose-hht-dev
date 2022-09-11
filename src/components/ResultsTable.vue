@@ -125,6 +125,11 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/scss/breakpoints.scss';
+$colors: (
+  'mild': #0c0,
+  'moderate': #ffa500,
+  'severe': #ff0033,
+);
 
 /* Table styles  */
 .showOutlines .outline {
@@ -135,22 +140,12 @@ export default {
   padding: 4px;
 }
 
-.mild .outline {
-  border-color: #ffec19 !important;
-  -webkit-box-shadow: 0px 0px 2px #ffec19, inset 0px 0px 2px #ffec19;
-  box-shadow: 0px 0px 2px #ffec19, inset 0px 0px 2px #ffec19;
-}
-
-.moderate .outline {
-  border-color: orange !important;
-  -webkit-box-shadow: 0px 0px 2px orange, inset 0px 0px 2px orange;
-  box-shadow: 0px 0px 2px orange, inset 0px 0px 2px orange;
-}
-
-.severe .outline {
-  border-color: #f6412d !important;
-  -webkit-box-shadow: 0px 0px 2px #f6412d, inset 0px 0px 2px #f6412d;
-  box-shadow: 0px 0px 2px #f6412d, inset 0px 0px 2px #f6412d;
+@each $name, $hex in $colors {
+  .#{$name} .outline {
+    border-color: #{$hex} !important;
+    -webkit-box-shadow: 0px 0px 2px #{$hex}, inset 0px 0px 2px #{$hex};
+    box-shadow: 0px 0px 2px #{$hex}, inset 0px 0px 2px #{$hex};
+  }
 }
 
 tbody tr:hover {

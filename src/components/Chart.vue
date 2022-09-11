@@ -29,9 +29,9 @@ export default {
   },
   methods: {
     getColor(value, measure) {
-      if (this.isMild({ [measure]: value })[measure]) return '#ffec19';
-      if (this.isModerate({ [measure]: value })[measure]) return 'orange';
-      if (this.isSevere({ [measure]: value })[measure]) return '#f6412d';
+      if (this.isMild({ [measure]: value })[measure]) return '#0c0';
+      if (this.isModerate({ [measure]: value })[measure]) return '#ffa500';
+      if (this.isSevere({ [measure]: value })[measure]) return '#ff0033';
     },
     getTicksAtCurrentSize() {
       // Get appropriate number of ticks, up to 95 due to max modal width
