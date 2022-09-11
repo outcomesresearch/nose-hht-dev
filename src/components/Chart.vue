@@ -71,10 +71,32 @@ export default {
       this.chart = c3.generate(
         mergeDeep(staticProps, {
           tooltip: {
-            format: {
-              title: (_, index) => {
-                return d3.timeFormat('%x')(croppedDataset[index].date);
-              },
+            // format: {
+            contents: (d) => {
+              const index = d[0].x;
+              // Pass this entry in croppedDataset through date formatter
+              const date = d3.timeFormat('%x')(croppedDataset[index].date);
+              // Pass this croppedDataset index's sum value thru formatter
+              const sum = valueFormatters[sumTimeseriesTitle](
+                croppedDataset[index].sumScore,
+              );
+              // Pass this croppedDataset index's avg value thru formatter
+              const avg = valueFormatters[averageTimeseriesTitle](
+                croppedDataset[index].averageScore,
+              );
+
+              // Construct table that forms tooltip
+              let str = `<table class="c3-tooltip"><tbody>`;
+              str += `<tr><th colspan="2">${date}</th></tr>`;
+              str += `<tr class="c3-tooltip-name">
+              <td class="name">${this.t(this.k.SUM)}</td>
+              <td class="value">${sum}</td>
+              </tr>`;
+              str += `<tr class="c3-tooltip-name">
+              <td class="name">${this.t(this.k.AVERAGE)}</td>
+              <td class="value">${avg}</td>
+              </tr>`;
+              return str + '</tbody></table>';
             },
           },
           axis: {
@@ -107,12 +129,7 @@ export default {
               }
             },
             columns: [
-              [
-                'x',
-                ...croppedDataset.map((d) =>
-                  new Date(d.date).toLocaleDateString(),
-                ),
-              ],
+              ['x', ...croppedDataset.map((d) => d3.timeFormat('%x')(d.date))],
               [sumTimeseriesTitle, ...croppedDataset.map((a) => a.sumScore)],
               [
                 averageTimeseriesTitle,
