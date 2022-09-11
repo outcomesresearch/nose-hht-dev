@@ -1,5 +1,16 @@
 <template>
-  <div id="chart"></div>
+  <div id="container">
+    <div id="chart"></div>
+    <div id="legend">
+      <span class="dot Mild">•</span>
+      <span class="dot Moderate">•</span>
+      <span class="dot Severe" style="margin-right: 5px;">•</span>
+      <span>
+        Represent clinically meaningful change in score from previous
+        assessment</span
+      >
+    </div>
+  </div>
 </template>
 
 <script>
@@ -45,6 +56,14 @@ export default {
           Math.abs(thisSum - prevSum) > 13 && Math.abs(thisAvg - prevAvg) > 0.46
         );
       }
+    },
+    // Get translated severity grades for use in legend
+    legendEntries() {
+      return [
+        this.t(this.k.INTERPRETATION_MILD),
+        this.t(this.k.INTERPRETATION_MODERATE),
+        this.t(this.k.INTERPRETATION_SEVERE),
+      ];
     },
     averageScore() {
       return (
@@ -125,7 +144,7 @@ export default {
           },
           data: {
             x: 'x',
-            hide: [sumTimeseriesTitle],
+            hide: [sumTimeseriesTitle, ...this.legendEntries()],
             labels: {
               // Value, series, index
               format: (v, s, i) => {
@@ -149,6 +168,7 @@ export default {
                 averageTimeseriesTitle,
                 ...croppedDataset.map((a) => a.averageScore),
               ],
+              ...this.legendEntries().map((name) => [name]),
             ],
             axes: {
               [averageTimeseriesTitle]: 'y',
@@ -172,6 +192,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/scss/colors.scss';
+
 .c3-chart-bar.c3-target-Sum {
   display: none;
 }
@@ -197,5 +219,30 @@ export default {
 .c3-grid .c3-ygrid-line > text {
   fill: black;
   text-shadow: 0px 0px 1px white;
+}
+
+#legend {
+  font-family: sans-serif;
+  font-size: 13px;
+  justify-content: center;
+  display: flex;
+  padding-left: 30px;
+  padding-right: 20px;
+}
+
+.dot {
+  font-size: 40px;
+}
+@each $name, $hex in $colors {
+  #legend .#{$name} {
+    color: #{$hex};
+  }
+  .c3-legend-item-#{$name} {
+    opacity: 1 !important;
+    pointer-events: none;
+  }
+  .c3-legend-item-#{$name} line {
+    stroke: #{$hex} !important;
+  }
 }
 </style>

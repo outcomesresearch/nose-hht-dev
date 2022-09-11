@@ -5,9 +5,9 @@ export default {
   ...fr, // existing vuetify translation entries
   [keys.FOOTER_COPYWRIGHT]:
     'NOSE HHT Copyright 2020 Washington University School of Medicine, St. Louis, Missouri',
-  [keys.INTERPRETATION_MILD]: 'Licht',
-  [keys.INTERPRETATION_MODERATE]: 'Matig',
-  [keys.INTERPRETATION_SEVERE]: 'Ernstig',
+  [keys.INTERPRETATION_MILD]: 'Léger',
+  [keys.INTERPRETATION_MODERATE]: 'Modéré',
+  [keys.INTERPRETATION_SEVERE]: 'Grave',
   [keys.SCORE_ONLY_IN_ENGLISH]:
     "L'interprétation de score est temporairement disponible uniquement en anglais",
   [keys.HEADER_TITLE]:

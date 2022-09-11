@@ -27,7 +27,7 @@ export default {
       padding: { top: 15, bottom: 0 },
     },
   },
-  legend: { hide: true },
+  legend: { position: 'bottom', hide: ['Sum', 'Average'] },
   grid: {
     y: {
       show: true,

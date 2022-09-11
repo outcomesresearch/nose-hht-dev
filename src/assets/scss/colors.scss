@@ -1,0 +1,21 @@
+$green: #0c0;
+$orange: #ffa500;
+$red: #ff0033;
+
+$colors: (
+  'Mild': $green,
+  'Léger': $green,
+  'Licht': $green,
+  'Lieve': $green,
+  'Leve': $green,
+
+  'Moderate': $orange,
+  'Moderato': $orange,
+  'Modéré': $orange,
+  'Matig': $orange,
+
+  'Severe': $red,
+  'Grave': $red,
+  'Considerable': $red,
+  'Ernstig': $red,
+);

@@ -29,7 +29,7 @@
           class="text-center"
           :class="allFieldsHaveValues ? `showOutlines` : ''"
         >
-          <tr class="mild">
+          <tr class="Mild">
             <td class="text-left">Mild</td>
             <td>
               <div :class="isMild({ sum }).sum && `outline`">
@@ -42,7 +42,7 @@
               </div>
             </td>
           </tr>
-          <tr class="moderate">
+          <tr class="Moderate">
             <td class="text-left">Moderate</td>
             <td>
               <div :class="isModerate({ sum }).sum && `outline`">
@@ -55,7 +55,7 @@
               </div>
             </td>
           </tr>
-          <tr class="severe">
+          <tr class="Severe">
             <td class="text-left">Severe</td>
             <td>
               <div :class="isSevere({ sum }).sum && `outline`">
@@ -125,11 +125,7 @@ export default {
 
 <style scoped lang="scss">
 @import '../assets/scss/breakpoints.scss';
-$colors: (
-  'mild': #0c0,
-  'moderate': #ffa500,
-  'severe': #ff0033,
-);
+@import "../assets/scss/colors.scss";
 
 /* Table styles  */
 .showOutlines .outline {
