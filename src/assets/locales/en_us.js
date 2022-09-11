@@ -102,4 +102,5 @@ export default {
   [keys.AVERAGE]: 'Average',
   [keys.CONTINUE]: 'Continue',
   [keys.ADD_DATA]: "Add today's score",
+  [keys.AVERAGE_SCORE_LABEL]: 'Average score',
 };

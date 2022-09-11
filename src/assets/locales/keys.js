@@ -93,4 +93,5 @@ export default {
   AVERAGE: "word for the 'average' metric portion of results",
   CONTINUE: 'word to proceed to next step',
   ADD_DATA: "phrase to add today's score",
+  AVERAGE_SCORE_LABEL: 'label that sits above avg line on past results chart',
 };

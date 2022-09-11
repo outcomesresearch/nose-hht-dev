@@ -46,6 +46,12 @@ export default {
         );
       }
     },
+    averageScore() {
+      return (
+        this.historicalData.reduce((a, i) => a + i.averageScore, 0) /
+        this.historicalData.length
+      );
+    },
     generatePlot() {
       const sorted = this.historicalData.slice();
 
@@ -95,6 +101,16 @@ export default {
               <td class="value">${avg}</td>
               </tr>`;
               return str + '</tbody></table>';
+            },
+          },
+          grid: {
+            y: {
+              lines: [
+                {
+                  value: this.averageScore(),
+                  text: this.t(this.k.AVERAGE_SCORE_LABEL),
+                },
+              ],
             },
           },
           axis: {
@@ -173,5 +189,13 @@ export default {
   box-shadow: 0px 0px 2px currentColor, inset 0px 0px 2px currentColor;
   text-shadow: 0px 0px 2px currentColor;
   z-index: 10;
+}
+
+.c3-grid .c3-ygrid-line > line {
+  stroke: black;
+}
+.c3-grid .c3-ygrid-line > text {
+  fill: black;
+  text-shadow: 0px 0px 1px white;
 }
 </style>
