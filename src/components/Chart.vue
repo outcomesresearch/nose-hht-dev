@@ -47,9 +47,7 @@ export default {
       }
     },
     generatePlot() {
-      const sorted = this.historicalData
-        .slice()
-        .sort((a, b) => a.date - b.date);
+      const sorted = this.historicalData.slice();
 
       // If dataset contains more points than we can show at this size,
       let maxAtThisSize = this.getTicksAtCurrentSize();

@@ -69,7 +69,9 @@ export default {
   },
   watch: {
     valid_email(e) {
-      this.historicalData = database[e] || [];
+      this.historicalData = database[e]
+        ? database[e].sort((a, b) => a.date - b.date)
+        : [];
     },
   },
   data() {
