@@ -1,3 +1,5 @@
+@import './breakpoints.scss';
+
 .button-container {
   display: flex;
   flex-direction: row;
@@ -11,6 +13,12 @@
   display: block;
 }
 
+.container-override {
+  display: flex;
+  flex-direction: column;
+  height: min-content;
+}
+
 @media only screen and (max-width: $SMALL) {
   .button-container {
     flex-direction: column;
@@ -22,5 +30,8 @@
   .show-on-mobile {
     display: block;
     margin-top: auto;
+  }
+  .container-override {
+    height: 100vh;
   }
 }

@@ -92,18 +92,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/scss/breakpoints.scss';
 @import '../assets/scss/stepStyle.scss';
-
-.container-override {
-  display: flex;
-  flex-direction: column;
-  height: min-content;
-}
-
-@media only screen and (max-width: $SMALL) {
-  .container-override {
-    height: 100vh;
-  }
-}
 </style>
