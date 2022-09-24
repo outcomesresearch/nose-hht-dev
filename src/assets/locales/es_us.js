@@ -6,8 +6,8 @@ export default {
   [keys.FOOTER_COPYWRIGHT]:
     'NOSE HHT Copyright 2020 Washington University School of Medicine, St. Louis, Missouri',
   [keys.INTERPRETATION_MILD]: 'Leve',
-  [keys.INTERPRETATION_MODERATE]: 'Moderato',
-  [keys.INTERPRETATION_SEVERE]: 'Considerable',
+  [keys.INTERPRETATION_MODERATE]: 'Moderata',
+  [keys.INTERPRETATION_SEVERE]: 'Grave',
   [keys.SCORE_ONLY_IN_ENGLISH]:
     'La interpretación de la puntuación solo está disponible temporalmente en inglés',
   [keys.HEADER_TITLE]:
@@ -85,4 +85,19 @@ export default {
   [keys.SECTION3_PROMPT_7]: 'Menos capacidad para concentrarse',
   [keys.SECTION3_PROMPT_8]: 'Tristeza',
   [keys.SECTION3_PROMPT_9]: 'Tener que comprar ropa nueva',
+
+  [keys.AVERAGE]: 'Media',
+  [keys.SUM]: 'Total',
+  [keys.SCORE]: 'Puntuación',
+  [keys.SCORE_WHEN_FORM_COMPLETE]:
+    'La puntuación se mostrará aquí cuando el formulario esté completo.',
+
+  [keys.INTERPRETATION_1]:
+    'Cuando se toman varias veces, las puntuaciones de HHT de NOSE se pueden usar para medir el cambio en los problemas físicos y funcionales, las limitaciones funcionales y las consecuencias emocionales de las hemorragias nasales a lo largo del tiempo y como resultado del tratamiento.',
+  [keys.INTERPRETATION_2]:
+    'Un cambio de 13 puntos en la puntuación total o 0.46 en la puntuación media entre dos instancias debe considerarse una diferencia clínicamente significativa.',
+
+  [keys.INTERPRETATION_TITLE]: 'Puntuación e interpretación de NOSE HHT',
+  [keys.BASED_ON_AVERAGE]: 'En base a la puntuación media',
+  [keys.BASED_ON_SUM]: 'En base a la puntuación total',
 };

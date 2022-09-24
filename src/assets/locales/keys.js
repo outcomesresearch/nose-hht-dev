@@ -89,9 +89,20 @@ export default {
   NO_DATA_AVAILABLE:
     'result when valid-formatted email entered, but no data for it',
 
-  SUM: "word for the 'sum' metric portion of results",
-  AVERAGE: "word for the 'average' metric portion of results",
   CONTINUE: 'word to proceed to next step',
   ADD_DATA: "phrase to add today's score",
   AVERAGE_SCORE_LABEL: 'label that sits above avg line on past results chart',
+
+  //Keys from interpretation table in main questionnaire
+  AVERAGE: "word 'average'",
+  SUM: "word 'sum'",
+  SCORE: "word 'score'",
+  SCORE_WHEN_FORM_COMPLETE: 'score wont show until form complete',
+
+  INTERPRETATION_1: 'part 1 of interpreation section',
+  INTERPRETATION_2: 'part 2 of interpreation section',
+
+  INTERPRETATION_TITLE: 'title of interpretation table',
+  BASED_ON_SUM: 'title of sum column',
+  BASED_ON_AVERAGE: 'title of average column',
 };

@@ -98,9 +98,24 @@ export default {
   [keys.RESULTS_TITLE]: 'NOSE-HHT Score History for ',
   [keys.NO_DATA_AVAILABLE]: 'No data available for that email.',
 
-  [keys.SUM]: 'Sum',
-  [keys.AVERAGE]: 'Average',
   [keys.CONTINUE]: 'Continue',
   [keys.ADD_DATA]: "Add today's score",
   [keys.AVERAGE_SCORE_LABEL]: 'Average score',
+
+  //Keys from interpretation table in main questionnaire
+  [keys.AVERAGE]: 'Average',
+  [keys.SUM]: 'Sum',
+  [keys.SCORE]: 'Score',
+  [keys.SCORE_WHEN_FORM_COMPLETE]:
+    'Result will display here when form is complete.',
+
+  [keys.INTERPRETATION_1]:
+    'When taken multiple times, NOSE HHT scores can be used to measure the change in physical and functional problems, functional limitations, and emotional consequences of nosebleeds over time and as a result of treatment.',
+  [keys.INTERPRETATION_2]:
+    'A change of 13 points in the sum score, or 0.46 in the mean score between two instances should be considered a clinically meaningful difference.',
+
+  [keys.INTERPRETATION_TITLE]: 'NOSE HHT Score Interpretation',
+
+  [keys.BASED_ON_AVERAGE]: 'Based on average',
+  [keys.BASED_ON_SUM]: 'Based on sum',
 };

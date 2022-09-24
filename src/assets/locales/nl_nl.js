@@ -5,7 +5,7 @@ export default {
   ...nl, // existing vuetify translation entries
   [keys.FOOTER_COPYWRIGHT]:
     'NOSE HHT Copyright 2020 Washington University School of Medicine, St. Louis, Missouri',
-  [keys.INTERPRETATION_MILD]: 'Licht',
+  [keys.INTERPRETATION_MILD]: 'Mild',
   [keys.INTERPRETATION_MODERATE]: 'Matig',
   [keys.INTERPRETATION_SEVERE]: 'Ernstig',
   [keys.SCORE_ONLY_IN_ENGLISH]:
@@ -84,4 +84,19 @@ export default {
   [keys.SECTION3_PROMPT_7]: 'Verminderde concentratie',
   [keys.SECTION3_PROMPT_8]: 'Droefheid',
   [keys.SECTION3_PROMPT_9]: 'De noodzaak om nieuwe kleding te kopen',
+
+  [keys.AVERAGE]: 'Gemiddelde',
+  [keys.SUM]: 'Totale',
+  [keys.SCORE]: 'Score',
+  [keys.SCORE_WHEN_FORM_COMPLETE]:
+    'De score wordt hier weergegeven als het formulier is voltooid.',
+
+  [keys.INTERPRETATION_1]:
+    'Wanneer meerdere keren genomen, kunnen NOSE HHT-scores worden gebruikt om de verandering in fysieke en functionele problemen, functionele beperkingen en emotionele gevolgen van neusbloedingen in de loop van de tijd en als gevolg van de behandeling te meten.',
+  [keys.INTERPRETATION_2]:
+    'Een verandering van 13 punten in de somscore, of 0,46 in de gemiddelde score tussen twee gevallen, moet als een klinisch betekenisvol verschil worden beschouwd.',
+
+  [keys.INTERPRETATION_TITLE]: 'Scoren en Interpretatie van NEUS-HHT',
+  [keys.BASED_ON_AVERAGE]: 'Op basis van gemiddelde score',
+  [keys.BASED_ON_SUM]: 'Op basis van somscore',
 };
