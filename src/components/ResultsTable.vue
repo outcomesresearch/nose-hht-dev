@@ -1,17 +1,14 @@
 <template>
   <v-card-text class="pa-6">
     <div>
-      <div class="disclaimer pb-2" v-if="$vuetify.lang.current != 'en_us'">
-        {{ t(k.SCORE_ONLY_IN_ENGLISH) }}<v-divider></v-divider>
-      </div>
       <h4 v-if="!allFieldsHaveValues" class="font-italic mb-4">
-        Result will display here when form is complete.
+        {{ t(k.SCORE_WHEN_FORM_COMPLETE) }}
       </h4>
     </div>
     <div v-if="allFieldsHaveValues" class="results mb-4">
-      <h3 class="black--text mb-2">Result:</h3>
-      <pre>Sum: {{ sum }}</pre>
-      <pre>Average: {{ average.toFixed(3) }}</pre>
+      <h3 class="black--text mb-2">{{ t(k.SCORE) }}:</h3>
+      <pre>{{ t(k.SUM) }}: {{ sum }}</pre>
+      <pre>{{ t(k.AVERAGE) }}: {{ average.toFixed(3) }}</pre>
     </div>
 
     <v-simple-table>
@@ -19,10 +16,10 @@
         <thead>
           <tr>
             <th class="text-left score-interp-title">
-              NOSE-HHT Score Interpretation
+              {{ t(k.INTERPRETATION_TITLE) }}
             </th>
-            <th class="text-center">Based on Sum</th>
-            <th class="text-center">Based on Average</th>
+            <th class="text-center">{{ t(k.BASED_ON_SUM) }}</th>
+            <th class="text-center">{{ t(k.BASED_ON_AVERAGE) }}</th>
           </tr>
         </thead>
         <tbody
@@ -30,7 +27,7 @@
           :class="allFieldsHaveValues ? `showOutlines` : ''"
         >
           <tr class="mild">
-            <td class="text-left">Mild</td>
+            <td class="text-left">{{ t(k.INTERPRETATION_MILD) }}</td>
             <td>
               <div :class="sum <= 27 && `outline`">&le; 27</div>
             </td>
@@ -39,7 +36,7 @@
             </td>
           </tr>
           <tr class="moderate">
-            <td class="text-left">Moderate</td>
+            <td class="text-left">{{ t(k.INTERPRETATION_MODERATE) }}</td>
             <td>
               <div :class="sum >= 28 && sum <= 54 && `outline`">28 to 54</div>
             </td>
@@ -50,7 +47,7 @@
             </td>
           </tr>
           <tr class="severe">
-            <td class="text-left">Severe</td>
+            <td class="text-left">{{ t(k.INTERPRETATION_SEVERE) }}</td>
             <td>
               <div :class="sum > 54 && `outline`">&gt; 54</div>
             </td>

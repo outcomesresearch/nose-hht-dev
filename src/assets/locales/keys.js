@@ -70,4 +70,16 @@ export default {
   SECTION3_PROMPT_7: 'section 3 question 7 (27)',
   SECTION3_PROMPT_8: 'section 3 question 8 (28)',
   SECTION3_PROMPT_9: 'section 3 question 9 (29)',
+
+  AVERAGE: "word 'average'",
+  SUM: "word 'sum'",
+  SCORE: "word 'score'",
+  SCORE_WHEN_FORM_COMPLETE: 'score wont show until form complete',
+
+  INTERPRETATION_1: 'part 1 of interpreation section',
+  INTERPRETATION_2: 'part 2 of interpreation section',
+
+  INTERPRETATION_TITLE: 'title of interpretation table',
+  BASED_ON_SUM: 'title of sum column',
+  BASED_ON_AVERAGE: 'title of average column',
 };

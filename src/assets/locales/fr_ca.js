@@ -5,9 +5,9 @@ export default {
   ...fr, // existing vuetify translation entries
   [keys.FOOTER_COPYWRIGHT]:
     'NOSE HHT Copyright 2020 Washington University School of Medicine, St. Louis, Missouri',
-  [keys.INTERPRETATION_MILD]: 'Licht',
-  [keys.INTERPRETATION_MODERATE]: 'Matig',
-  [keys.INTERPRETATION_SEVERE]: 'Ernstig',
+  [keys.INTERPRETATION_MILD]: 'Léger',
+  [keys.INTERPRETATION_MODERATE]: 'Modéré',
+  [keys.INTERPRETATION_SEVERE]: 'Sévère',
   [keys.SCORE_ONLY_IN_ENGLISH]:
     "L'interprétation de score est temporairement disponible uniquement en anglais",
   [keys.HEADER_TITLE]:
@@ -85,4 +85,19 @@ export default {
   [keys.SECTION3_PROMPT_7]: 'Baisse de concentration ',
   [keys.SECTION3_PROMPT_8]: 'Tristesse',
   [keys.SECTION3_PROMPT_9]: 'Le besoin d’acheter de nouveaux vêtements',
+
+  [keys.AVERAGE]: 'Moyen',
+  [keys.SUM]: 'Total',
+  [keys.SCORE]: 'Score',
+  [keys.SCORE_WHEN_FORM_COMPLETE]:
+    "Le score s'affichera ici lorsque le formulaire sera rempli.",
+
+  [keys.INTERPRETATION_1]:
+    "Lorsqu'ils sont pris plusieurs fois, les scores NOSE HHT peuvent être utilisés pour mesurer l'évolution des problèmes physiques et fonctionnels, des limitations fonctionnelles et des conséquences émotionnelles des saignements de nez au fil du temps et à la suite d'un traitement.",
+  [keys.INTERPRETATION_2]:
+    'Un changement de 13 points dans le score total ou de 0,46 dans le score moyen entre deux instances doit être considéré comme une différence cliniquement significative.',
+
+  [keys.INTERPRETATION_TITLE]: 'Interprétation et notation du score Nose-HHT',
+  [keys.BASED_ON_AVERAGE]: 'Basé sur le score moyen',
+  [keys.BASED_ON_SUM]: 'Basé sur le score total',
 };

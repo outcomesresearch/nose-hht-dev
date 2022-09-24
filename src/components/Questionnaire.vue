@@ -102,15 +102,10 @@
     <v-card>
       <v-card-text>
         <p class="grey--text text--darken-3">
-          When taken multiple times, NOSE HHT scores can be used to measure the
-          change in physical and functional problems, functional limitations,
-          and emotional consequences of nosebleeds over time and as a result of
-          treatment.
+          {{ t(k.INTERPRETATION_1) }}
         </p>
         <p class="mb-0 grey--text text--darken-3">
-          A change of 13 points in the sum score, or 0.46 in the mean score
-          between two instances should be considered a clinically meaningful
-          difference.
+          {{ t(k.INTERPRETATION_2) }}
         </p>
       </v-card-text>
     </v-card>
