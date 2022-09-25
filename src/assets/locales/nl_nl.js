@@ -85,6 +85,24 @@ export default {
   [keys.SECTION3_PROMPT_8]: 'Droefheid',
   [keys.SECTION3_PROMPT_9]: 'De noodzaak om nieuwe kleding te kopen',
 
+  [keys.LOAD_PAST_SCORES]: 'Eerdere scores bekijken',
+  [keys.AUTHENTICATE_YOURSELF]: 'Inloggen met e-mail',
+  [keys.CLOSE]: 'Sluiten',
+  [keys.BACK]: 'Terug',
+  [keys.SIGN_UP]: 'Registreren',
+  [keys.USE_EXISTING]: 'Aanmelden',
+  [keys.SUBMIT]: 'Verzenden',
+  [keys.IMPROPER_EMAIL]: 'Ongeldige e-mailindeling',
+
+  [keys.RESULTS_TITLE]: 'Eerdere NOSE-HHT scores voor ',
+  [keys.NO_DATA_AVAILABLE]: 'Geen gegevens beschikbaar voor deze e-mail.',
+
+  [keys.CONTINUE]: 'Doorgaan',
+  [keys.ADD_DATA]: 'Score van vandaag toevoegen',
+  [keys.AVERAGE_SCORE_LABEL]: 'Gemiddelde score',
+  [keys.CLINICALLY_MEANINGFUL_BAR]:
+    'Beschouwd als een klinisch significant verschil met de vorige score',
+
   [keys.AVERAGE]: 'Gemiddelde',
   [keys.SUM]: 'Totale',
   [keys.SCORE]: 'Score',

@@ -5,10 +5,7 @@
       <span class="dot Mild">•</span>
       <span class="dot Moderate">•</span>
       <span class="dot Severe" style="margin-right: 5px;">•</span>
-      <span>
-        Represent clinically meaningful change in score from previous
-        assessment</span
-      >
+      <span> {{ t(k.CLINICALLY_MEANINGFUL_BAR) }}</span>
     </div>
   </div>
 </template>

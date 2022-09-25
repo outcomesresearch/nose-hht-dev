@@ -92,6 +92,7 @@ export default {
   CONTINUE: 'word to proceed to next step',
   ADD_DATA: "phrase to add today's score",
   AVERAGE_SCORE_LABEL: 'label that sits above avg line on past results chart',
+  CLINICALLY_MEANINGFUL_BAR: "this bar's score is clinically meaningful",
 
   //Keys from interpretation table in main questionnaire
   AVERAGE: "word 'average'",

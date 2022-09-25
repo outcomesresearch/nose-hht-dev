@@ -86,6 +86,24 @@ export default {
   [keys.SECTION3_PROMPT_8]: 'Tristezza',
   [keys.SECTION3_PROMPT_9]: 'Necessità di comprare vestiti nuovi',
 
+  [keys.LOAD_PAST_SCORES]: 'Visualizza i punteggi passati',
+  [keys.AUTHENTICATE_YOURSELF]: "Accedi con l'indirizzo e-mail",
+  [keys.CLOSE]: 'Chiudi',
+  [keys.BACK]: 'Indietro',
+  [keys.SIGN_UP]: 'Iscriviti',
+  [keys.USE_EXISTING]: 'Accedi',
+  [keys.SUBMIT]: 'Invia',
+  [keys.IMPROPER_EMAIL]: "L'indirizzo email non è valido",
+
+  [keys.RESULTS_TITLE]: 'I punteggi passati di NOSE HHT per ',
+  [keys.NO_DATA_AVAILABLE]: 'Nessun dato disponibile per questa email.',
+
+  [keys.CONTINUE]: 'Continua',
+  [keys.ADD_DATA]: 'Aggiungi il punteggio di oggi',
+  [keys.AVERAGE_SCORE_LABEL]: 'Punteggio medio',
+  [keys.CLINICALLY_MEANINGFUL_BAR]:
+    'Considerata una differenza clinicamente significativa rispetto al punteggio precedente',
+
   [keys.AVERAGE]: 'Medio',
   [keys.SUM]: 'Totale',
   [keys.SCORE]: 'Punteggio',

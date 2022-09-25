@@ -85,6 +85,25 @@ export default {
   [keys.SECTION3_PROMPT_8]: 'Tristeza',
   [keys.SECTION3_PROMPT_9]: 'La necesidad de comprar ropa nueva',
 
+  [keys.LOAD_PAST_SCORES]: 'Ver puntuaciones pasadas',
+  [keys.AUTHENTICATE_YOURSELF]: 'Iniciar sesión con dirección de email',
+  [keys.CLOSE]: 'Cerrar',
+  [keys.BACK]: 'Atrás',
+  [keys.SIGN_UP]: 'Registrarse',
+  [keys.USE_EXISTING]: 'Iniciar sesión',
+  [keys.SUBMIT]: 'Enviar',
+  [keys.IMPROPER_EMAIL]: 'Formato de email no válido',
+
+  [keys.RESULTS_TITLE]: 'Puntuaciones Pasadas de HHT de NOSE para ',
+  [keys.NO_DATA_AVAILABLE]:
+    'No hay datos disponibles para este correo electrónico.',
+
+  [keys.CONTINUE]: 'Continuar',
+  [keys.ADD_DATA]: 'Añadir puntuación de hoy',
+  [keys.AVERAGE_SCORE_LABEL]: 'Puntuación media',
+  [keys.CLINICALLY_MEANINGFUL_BAR]:
+    'Se considera una diferencia clínicamente significativa con respecto a la puntuación anterior',
+
   [keys.AVERAGE]: 'Media',
   [keys.SUM]: 'Total',
   [keys.SCORE]: 'Puntuación',
@@ -96,7 +115,7 @@ export default {
   [keys.INTERPRETATION_2]:
     'Un cambio de 13 puntos en la puntuación total o 0,46 en la puntuación media entre dos instancias debe considerarse una diferencia clínicamente significativa.',
 
-  [keys.INTERPRETATION_TITLE]: 'Puntuación e interpretación de NOSE HHT',
+  [keys.INTERPRETATION_TITLE]: 'Puntuación e interpretación de HHT de NOSE',
   [keys.BASED_ON_AVERAGE]: 'En base a la puntuación media',
   [keys.BASED_ON_SUM]: 'En base a la puntuación total',
 };

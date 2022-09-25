@@ -101,6 +101,8 @@ export default {
   [keys.CONTINUE]: 'Continue',
   [keys.ADD_DATA]: "Add today's score",
   [keys.AVERAGE_SCORE_LABEL]: 'Average score',
+  [keys.CLINICALLY_MEANINGFUL_BAR]:
+    'Represent clinically meaningful change from previous score',
 
   //Keys from interpretation table in main questionnaire
   [keys.AVERAGE]: 'Average',

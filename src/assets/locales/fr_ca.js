@@ -86,6 +86,24 @@ export default {
   [keys.SECTION3_PROMPT_8]: 'Tristesse',
   [keys.SECTION3_PROMPT_9]: 'Le besoin d’acheter de nouveaux vêtements',
 
+  [keys.LOAD_PAST_SCORES]: 'Voir les scores passés',
+  [keys.AUTHENTICATE_YOURSELF]: "Connectez-vous avec l'adresse e-mail",
+  [keys.CLOSE]: 'Fermer',
+  [keys.BACK]: 'Retour',
+  [keys.SIGN_UP]: "S'inscrire",
+  [keys.USE_EXISTING]: 'Se connecter',
+  [keys.SUBMIT]: 'Envoyer',
+  [keys.IMPROPER_EMAIL]: "Le format de l'adresse e-mail n'est pas valide",
+
+  [keys.RESULTS_TITLE]: 'Scores NOSE HHT passés pour ',
+  [keys.NO_DATA_AVAILABLE]: 'Aucune donnée disponible pour cet e-mail.',
+
+  [keys.CONTINUE]: 'Continuer',
+  [keys.ADD_DATA]: "Ajouter le score d'aujourd'hui",
+  [keys.AVERAGE_SCORE_LABEL]: 'Score moyen',
+  [keys.CLINICALLY_MEANINGFUL_BAR]:
+    'Considéré comme une différence cliniquement significative avec le score précédent',
+
   [keys.AVERAGE]: 'Moyen',
   [keys.SUM]: 'Total',
   [keys.SCORE]: 'Score',
