@@ -19,7 +19,7 @@ const averageTimeseriesTitle = 'Average';
 const sumTimeseriesTitle = 'Sum';
 
 const valueFormatters = {
-  [averageTimeseriesTitle]: (value) => value.toFixed(2),
+  [averageTimeseriesTitle]: (value) => d3.format('.2f')(value),
   [sumTimeseriesTitle]: parseInt,
 };
 

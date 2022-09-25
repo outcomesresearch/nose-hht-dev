@@ -73,6 +73,7 @@ export default {
   methods: {
     changeLanguage(newLanguage) {
       d3.timeFormatDefaultLocale(dateTimeLocales[newLanguage.name]);
+      d3.formatDefaultLocale(dateTimeLocales[newLanguage.name]);
       this.selected = newLanguage;
       this.$vuetify.lang.current = newLanguage.name;
     },

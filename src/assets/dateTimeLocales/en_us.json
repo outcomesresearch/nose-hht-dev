@@ -3,6 +3,8 @@
   "date": "%-m/%-d/%Y",
   "time": "%-I:%M:%S %p",
   "periods": ["AM", "PM"],
+  "decimal": ".",
+  "thousands": ",",
   "days": [
     "Sunday",
     "Monday",
