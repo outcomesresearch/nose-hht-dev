@@ -20,7 +20,7 @@ export default [
         return {
           sum: sum > 29 && sum <= 58,
           average: average > 1.01 && average <= 2,
-          phrase: { sum: '29 -> 58', average: '1.01 -> 2' },
+          phrase: { sum: '30 -> 58', average: '1.01 -> 2' },
         };
       },
       isSevere({ sum, average }) {
