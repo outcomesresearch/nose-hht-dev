@@ -49,7 +49,8 @@
 
 <script>
 import { bus, MODAL_CLOSED } from '../services/bus';
-
+import * as hi from '../services/firebase';
+// console.log(hi);
 export default {
   created() {
     bus.$on(MODAL_CLOSED, () => {
