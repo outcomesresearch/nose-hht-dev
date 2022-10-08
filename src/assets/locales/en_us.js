@@ -94,6 +94,7 @@ export default {
   [keys.USE_EXISTING]: 'Log in',
   [keys.SUBMIT]: 'Submit',
   [keys.IMPROPER_EMAIL]: 'Email not in correct format',
+  [keys.EMAIL_REQUIRED]: 'Email is required',
 
   [keys.RESULTS_TITLE]: 'NOSE-HHT Score History for ',
   [keys.NO_DATA_AVAILABLE]: 'No data available for that email.',

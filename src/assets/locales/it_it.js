@@ -93,7 +93,8 @@ export default {
   [keys.SIGN_UP]: 'Iscriviti',
   [keys.USE_EXISTING]: 'Accedi',
   [keys.SUBMIT]: 'Invia',
-  [keys.IMPROPER_EMAIL]: "L'indirizzo email non è valido",
+  [keys.IMPROPER_EMAIL]: "L'indirizzo e-mail non è valido",
+  [keys.EMAIL_REQUIRED]: "E-mail obbligatorio",
 
   [keys.RESULTS_TITLE]: 'I punteggi passati di NOSE HHT per ',
   [keys.NO_DATA_AVAILABLE]: 'Nessun dato disponibile per questa email.',

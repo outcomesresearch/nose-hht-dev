@@ -93,6 +93,7 @@ export default {
   [keys.USE_EXISTING]: 'Aanmelden',
   [keys.SUBMIT]: 'Verzenden',
   [keys.IMPROPER_EMAIL]: 'Ongeldige e-mailindeling',
+  [keys.EMAIL_REQUIRED]: 'E-mail is vereist',
 
   [keys.RESULTS_TITLE]: 'Eerdere NOSE-HHT scores voor ',
   [keys.NO_DATA_AVAILABLE]: 'Geen gegevens beschikbaar voor deze e-mail.',

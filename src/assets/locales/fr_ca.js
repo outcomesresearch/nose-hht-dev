@@ -94,6 +94,7 @@ export default {
   [keys.USE_EXISTING]: 'Se connecter',
   [keys.SUBMIT]: 'Envoyer',
   [keys.IMPROPER_EMAIL]: "Le format de l'adresse e-mail n'est pas valide",
+  [keys.EMAIL_REQUIRED]: "Une adresse e-mail est requise",
 
   [keys.RESULTS_TITLE]: 'Scores NOSE HHT passés pour ',
   [keys.NO_DATA_AVAILABLE]: 'Aucune donnée disponible pour cet e-mail.',

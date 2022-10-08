@@ -14,7 +14,7 @@
                 <v-text-field
                   v-model="internal_email"
                   label="natasha@example.com"
-                  :rules="rules"
+                  :rules="[emailExists(), emailValid()]"
                   required
                   @keyup.enter="handleKeyup"
                 ></v-text-field>
@@ -75,6 +75,12 @@ export default {
         this.signup_processing = false;
       }, 500);
     },
+    emailExists() {
+      return (v) => !!v || this.t(this.k.EMAIL_REQUIRED);
+    },
+    emailValid() {
+      return (v) => /.+@.+\..+/.test(v) || this.t(this.k.IMPROPER_EMAIL);
+    },
   },
   data() {
     return {
@@ -82,10 +88,6 @@ export default {
       login_processing: false,
       signup_processing: false,
       internal_email: '',
-      rules: [
-        (v) => !!v || 'E-mail is required',
-        (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      ],
     };
   },
 };

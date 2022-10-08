@@ -93,7 +93,8 @@ export default {
   [keys.SIGN_UP]: 'Registrarse',
   [keys.USE_EXISTING]: 'Iniciar sesión',
   [keys.SUBMIT]: 'Enviar',
-  [keys.IMPROPER_EMAIL]: 'Formato de email no válido',
+  [keys.IMPROPER_EMAIL]: 'Formato el correo electrónico no válido',
+  [keys.EMAIL_REQUIRED]: 'Se requiere el correo electrónico',
 
   [keys.RESULTS_TITLE]: 'Puntuaciones Pasadas de HHT de NOSE para ',
   [keys.NO_DATA_AVAILABLE]:
