@@ -5,8 +5,8 @@
         <v-card-title class="text-h5">
           {{ t(k.RESULTS_TITLE) }}{{ valid_email }}
         </v-card-title>
-        <v-card-text style="padding: 0px;" v-if="historicalData.length">
-          <Chart :historicalData="historicalData" />
+        <v-card-text style="padding: 0px;" v-if="internalData.length">
+          <Chart :historicalData="internalData" />
         </v-card-text>
         <v-card-text v-else>
           <div>{{ t(k.NO_DATA_AVAILABLE) }}</div>
@@ -37,12 +37,12 @@
 </template>
 
 <script>
-import * as database from '../assets/json/emails.mock.json';
 import Chart from './Chart.vue';
 import { mapGetters } from 'vuex';
+import { addUserData } from '../services/firebase';
 
 export default {
-  props: ['valid_email'],
+  props: ['valid_email', 'past_entries'],
   components: { Chart },
   computed: {
     ...mapGetters(['getSum', 'getAverage', 'getQuestionnaireComplete']),
@@ -53,14 +53,14 @@ export default {
   },
   methods: {
     lastScoreBeforeToday() {
-      if (!this.historicalData.length) return true; // if no past score, allow to create new one
+      if (!this.internalData.length) return true; // if no past score, allow to create new one
 
       // if past score is earlier than midnight on current day, allow to create new one
       var d = new Date().setUTCHours(0, 0, 0, 0); // midnight on current day in UTC time
-      return this.historicalData[this.historicalData.length - 1].date < d;
+      return this.internalData[this.internalData.length - 1].date < d;
     },
     addData() {
-      this.historicalData.push({
+      addUserData(this.valid_email, {
         date: Date.now(), // set score to current UTC timestamp
         sumScore: this.getSum || 0.0001, // if zero, set to small score
         averageScore: this.getAverage || 0.0001, // if zero, set to small score,
@@ -68,15 +68,17 @@ export default {
     },
   },
   watch: {
-    valid_email(e) {
-      this.historicalData = database[e]
-        ? database[e].sort((a, b) => a.date - b.date)
+    past_entries(e) {
+      this.internalData = e
+        ? Object.keys(e)
+            .reduce((a, i) => [...a, e[i]], [])
+            .sort((a, b) => a.date - b.date)
         : [];
     },
   },
   data() {
     return {
-      historicalData: [],
+      internalData: [],
     };
   },
 };

@@ -16,7 +16,11 @@
     <v-stepper v-model="currentStep" class="">
       <v-stepper-items>
         <SubmitEmail @valid-email="receivedValidEmail" />
-        <ResultsPage :valid_email="email" @step-change="handleStepChange" />
+        <ResultsPage
+          :valid_email="email"
+          :past_entries="relevantEntries"
+          @step-change="handleStepChange"
+        />
       </v-stepper-items>
     </v-stepper>
   </v-dialog>
@@ -41,9 +45,9 @@ export default {
     handleStepChange(nextStep) {
       this.currentStep = nextStep;
     },
-    receivedValidEmail(e) {
-      console.log(e);
-      this.email = e;
+    receivedValidEmail({ email, pastEntries }) {
+      this.email = email;
+      this.relevantEntries = pastEntries;
       this.currentStep = 2;
     },
   },
@@ -51,6 +55,7 @@ export default {
     return {
       dialog: false,
       email: '',
+      relevantEntries: [],
       currentStep: 1,
     };
   },

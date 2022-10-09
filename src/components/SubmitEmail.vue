@@ -49,7 +49,7 @@
 
 <script>
 import { bus, MODAL_CLOSED } from '../services/bus';
-import * as hi from '../services/firebase';
+import { getUserData } from '../services/firebase';
 
 export default {
   created() {
@@ -64,10 +64,14 @@ export default {
     },
     signIn() {
       this.signin_processing = true;
-      setTimeout(() => {
-        this.$emit('valid-email', this.internal_email);
-        this.signin_processing = false;
-      }, 1000);
+      const actionOnSuccess = (validResults) => {
+        this.$emit('valid-email', {
+          email: this.internal_email,
+          pastEntries: validResults,
+        });
+      };
+      getUserData(this.internal_email, actionOnSuccess);
+      this.signin_processing = false;
     },
     emailExists() {
       return (v) => !!v || this.t(this.k.EMAIL_REQUIRED);
