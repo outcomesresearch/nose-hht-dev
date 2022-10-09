@@ -29,9 +29,9 @@
               <v-spacer></v-spacer>
               <v-btn
                 text
-                @click="signUp"
-                :disabled="!valid || login_processing || signup_processing"
-                :loading="signup_processing"
+                @click="signIn"
+                :disabled="!valid || signin_processing"
+                :loading="signin_processing"
                 >{{ t(k.CONTINUE) }}</v-btn
               >
             </div>
@@ -50,7 +50,7 @@
 <script>
 import { bus, MODAL_CLOSED } from '../services/bus';
 import * as hi from '../services/firebase';
-// console.log(hi);
+
 export default {
   created() {
     bus.$on(MODAL_CLOSED, () => {
@@ -60,21 +60,14 @@ export default {
   },
   methods: {
     handleKeyup() {
-      this.logIn();
+      this.signIn();
     },
-    logIn() {
-      this.login_processing = true;
+    signIn() {
+      this.signin_processing = true;
       setTimeout(() => {
         this.$emit('valid-email', this.internal_email);
-        this.login_processing = false;
+        this.signin_processing = false;
       }, 1000);
-    },
-    signUp() {
-      this.signup_processing = true;
-      setTimeout(() => {
-        this.$emit('valid-email', this.internal_email);
-        this.signup_processing = false;
-      }, 500);
     },
     emailExists() {
       return (v) => !!v || this.t(this.k.EMAIL_REQUIRED);
@@ -86,8 +79,7 @@ export default {
   data() {
     return {
       valid: false,
-      login_processing: false,
-      signup_processing: false,
+      signin_processing: false,
       internal_email: '',
     };
   },
