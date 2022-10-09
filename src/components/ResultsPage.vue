@@ -62,8 +62,8 @@ export default {
     addData() {
       this.historicalData.push({
         date: Date.now(), // set score to current UTC timestamp
-        sumScore: this.getSum,
-        averageScore: this.getAverage,
+        sumScore: this.getSum || 0.0001, // if zero, set to small score
+        averageScore: this.getAverage || 0.0001, // if zero, set to small score,
       });
     },
   },
