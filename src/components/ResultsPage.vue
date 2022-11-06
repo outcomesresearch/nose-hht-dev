@@ -39,7 +39,7 @@
 <script>
 import Chart from './Chart.vue';
 import { mapGetters } from 'vuex';
-import { addUserData } from '../services/firebase';
+import { addUserData, signUp, getUserData } from '../services/firebase';
 
 export default {
   props: ['valid_email', 'past_entries'],
@@ -59,12 +59,24 @@ export default {
       var d = new Date().setUTCHours(0, 0, 0, 0); // midnight on current day in UTC time
       return this.internalData[this.internalData.length - 1].date < d;
     },
-    addData() {
-      addUserData(this.valid_email, {
+    async addData() {
+      const payload = {
         date: Date.now(), // set score to current UTC timestamp
         sumScore: this.getSum || 0.0001, // if zero, set to small score
         averageScore: this.getAverage || 0.0001, // if zero, set to small score,
-      });
+      };
+      if (!this.internalData.length) {
+        // This is an account with no prior scores
+        const actionOnSuccess = (validResults) => {
+          this.$emit('valid-email', {
+            email: this.valid_email,
+            pastEntries: validResults,
+          });
+        };
+        const uid = await signUp(this.valid_email);
+        await addUserData(payload); // add data first, then pull from database
+        getUserData(uid, actionOnSuccess);
+      } else addUserData(payload);
     },
   },
   watch: {

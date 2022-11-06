@@ -49,7 +49,7 @@
 
 <script>
 import { bus, MODAL_CLOSED } from '../services/bus';
-import { getUserData } from '../services/firebase';
+import { logIn } from '../services/firebase';
 
 export default {
   created() {
@@ -62,7 +62,7 @@ export default {
     handleKeyup() {
       this.signIn();
     },
-    signIn() {
+    async signIn() {
       this.signin_processing = true;
       const actionOnSuccess = (validResults) => {
         this.$emit('valid-email', {
@@ -70,7 +70,7 @@ export default {
           pastEntries: validResults,
         });
       };
-      getUserData(this.internal_email, actionOnSuccess);
+      await logIn(this.internal_email, actionOnSuccess);
       this.signin_processing = false;
     },
     emailExists() {

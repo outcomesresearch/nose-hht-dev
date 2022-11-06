@@ -20,6 +20,7 @@
           :valid_email="email"
           :past_entries="relevantEntries"
           @step-change="handleStepChange"
+          @valid-email="receivedValidEmail"
         />
       </v-stepper-items>
     </v-stepper>
