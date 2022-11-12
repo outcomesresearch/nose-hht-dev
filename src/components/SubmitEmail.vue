@@ -52,6 +52,7 @@ import { bus, MODAL_CLOSED } from '../services/bus';
 import { logIn } from '../services/firebase';
 
 export default {
+  props: ['actionOnSuccess'],
   created() {
     bus.$on(MODAL_CLOSED, () => {
       this.internal_email = '';
@@ -64,13 +65,9 @@ export default {
     },
     async signIn() {
       this.signin_processing = true;
-      const actionOnSuccess = (validResults) => {
-        this.$emit('valid-email', {
-          email: this.internal_email,
-          pastEntries: validResults,
-        });
-      };
-      await logIn(this.internal_email, actionOnSuccess);
+      this.$emit('valid-email', this.internal_email);
+      this.$emit('step-change', 2);
+      await logIn(this.internal_email, this.actionOnSuccess);
       this.signin_processing = false;
     },
     emailExists() {

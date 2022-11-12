@@ -42,7 +42,7 @@ import { mapGetters } from 'vuex';
 import { addUserData, signUp, getUserData } from '../services/firebase';
 
 export default {
-  props: ['valid_email', 'past_entries'],
+  props: ['valid_email', 'past_entries', 'actionOnSuccess'],
   components: { Chart },
   computed: {
     ...mapGetters(['getSum', 'getAverage', 'getQuestionnaireComplete']),
@@ -67,15 +67,9 @@ export default {
       };
       if (!this.internalData.length) {
         // This is an account with no prior scores
-        const actionOnSuccess = (validResults) => {
-          this.$emit('valid-email', {
-            email: this.valid_email,
-            pastEntries: validResults,
-          });
-        };
         const uid = await signUp(this.valid_email);
         await addUserData(payload); // add data first, then pull from database
-        getUserData(uid, actionOnSuccess);
+        getUserData(uid, this.actionOnSuccess);
       } else addUserData(payload);
     },
   },

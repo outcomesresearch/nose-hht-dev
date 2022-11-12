@@ -56,7 +56,7 @@ export function getUserData(uid, actionOnSuccess) {
       console.error(e);
     };
 
-    onValue(reference, successCallback, errorCallback, { onlyOnce: true });
+    onValue(reference, successCallback, errorCallback);
   });
 }
 
