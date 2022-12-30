@@ -1,11 +1,18 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, off, update, onValue } from 'firebase/database';
+import {
+  getDatabase,
+  ref as _ref,
+  off,
+  update,
+  onValue,
+} from 'firebase/database';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import store from './store';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -20,6 +27,13 @@ const firebaseConfig = {
 };
 
 const VUE_APP_FB_PASSWORD = 'password';
+let listeners = [];
+
+function ref(...args) {
+  const reference = _ref(...args);
+  listeners.push(reference);
+  return reference;
+}
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -27,7 +41,7 @@ const app = initializeApp(firebaseConfig);
 /**
  * Sign user in with studyID and hardcoded password per user management specifications (only use studyID to login)
  */
-export function logIn(email, actionOnSuccess) {
+export async function logIn(email, actionOnSuccess) {
   const auth = getAuth();
   return signInWithEmailAndPassword(auth, email, VUE_APP_FB_PASSWORD)
     .then((loginRepsonse) => {
@@ -37,6 +51,7 @@ export function logIn(email, actionOnSuccess) {
       if (error.message.includes('auth/user-not-found'))
         return actionOnSuccess([]);
 
+      store.dispatch('SET_ERROR', error);
       throw error;
     });
 }
@@ -53,7 +68,8 @@ export function getUserData(uid, actionOnSuccess) {
     };
 
     const errorCallback = (e) => {
-      console.error(e);
+      store.dispatch('SET_ERROR', e);
+      j(e);
     };
 
     onValue(reference, successCallback, errorCallback);
@@ -63,7 +79,7 @@ export function getUserData(uid, actionOnSuccess) {
 /**
  * Sign up user email and hardcoded password per user management specifications (only use studyID to login)
  */
-export function signUp(email) {
+export async function signUp(email) {
   return new Promise((r, j) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, VUE_APP_FB_PASSWORD)
@@ -72,12 +88,18 @@ export function signUp(email) {
         const db = getDatabase(app);
         const reference = ref(db, user.uid);
 
-        update(reference, { emailPlain: email }).then(() => {
-          off(reference);
-        });
+        update(reference, { emailPlain: email });
         r(user.uid);
       })
-      .catch(j);
+      .catch((error) => {
+        console.log(error);
+        if (error.message.includes('auth/email-already-in-use')) r(undefined);
+        else throw error;
+      })
+      .catch((error) => {
+        store.dispatch('SET_ERROR', error);
+        j(error);
+      });
   });
 }
 
@@ -95,5 +117,12 @@ export function addUserData(payload) {
     [`${path}/${newPostKey}`]: payload,
   };
 
-  return update(reference, updates);
+  return update(reference, updates).catch((error) => {
+    store.dispatch('SET_ERROR', error);
+    throw error;
+  });
+}
+
+export function removeAllListeners() {
+  listeners.forEach(off);
 }

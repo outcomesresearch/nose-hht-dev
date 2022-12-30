@@ -65,10 +65,13 @@ export default {
     },
     async signIn() {
       this.signin_processing = true;
-      this.$emit('valid-email', this.internal_email);
-      this.$emit('step-change', 2);
-      await logIn(this.internal_email, this.actionOnSuccess);
-      this.signin_processing = false;
+      try {
+        await logIn(this.internal_email, this.actionOnSuccess);
+        this.$emit('valid-email', this.internal_email);
+        this.$emit('step-change', 2);
+      } finally {
+        this.signin_processing = false;
+      }
     },
     emailExists() {
       return (v) => !!v || this.t(this.k.EMAIL_REQUIRED);

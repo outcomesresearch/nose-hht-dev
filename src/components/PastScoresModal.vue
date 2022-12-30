@@ -28,26 +28,31 @@
         />
       </v-stepper-items>
     </v-stepper>
+    <SnackbarWrapper />
   </v-dialog>
 </template>
 
 <script>
 import SubmitEmail from './SubmitEmail';
 import ResultsPage from './ResultsPage';
+import SnackbarWrapper from './SnackbarWrapper';
 import { bus, MODAL_CLOSED } from '../services/bus';
+import { removeAllListeners } from '../services/firebase';
 
 export default {
   props: ['smallSize'],
-  components: { SubmitEmail, ResultsPage },
+  components: { SubmitEmail, ResultsPage, SnackbarWrapper },
   created() {
     bus.$on(MODAL_CLOSED, () => {
       this.currentStep = 1;
       this.email = '';
       this.dialog = false;
+      removeAllListeners();
     });
   },
   methods: {
     handleStepChange(nextStep) {
+      if (nextStep === 1) removeAllListeners();
       this.currentStep = nextStep;
     },
     receivedEntries(pastEntries) {
